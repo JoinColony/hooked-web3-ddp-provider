@@ -47,7 +47,7 @@ export class HookedWeb3DdpProvider {
       'eth_getBalance',
       'net_listening'
     ];
-    if (!supportedMethods.includes(payload.method)) {
+    if (supportedMethods.indexOf(payload.method) < 0) {
       return callback(new Error('This provider doesn\'t support that method'));
     }
     Meteor.call('web3DdpProviderExec', payload, callback);
