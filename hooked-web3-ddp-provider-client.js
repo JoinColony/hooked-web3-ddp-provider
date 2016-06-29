@@ -20,8 +20,15 @@ export class HookedWeb3DdpProvider {
   // methods to sendRawTransaction, calling out to the transaction_signer to
   // get the data for sendRawTransaction.
   sendAsync(payload, callback) {
-    const finishedWithRewrite = () => {
-      this.sendDdpRequest(payload, callback);
+    const finishedWithRewrite = (error) => {
+
+      //this function may be called with an error as an argument, we should
+      //catch it and bubble it up
+      if(error && error instanceof Error) {
+        callback(error);
+      } else {
+        this.sendDdpRequest(payload, callback);
+      }
     };
     const requests = [].concat(payload);
     this.rewritePayloads(0, requests, {}, finishedWithRewrite);
