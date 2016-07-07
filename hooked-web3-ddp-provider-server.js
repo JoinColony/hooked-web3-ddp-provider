@@ -11,12 +11,11 @@ Meteor.methods({
       checkIfMethodIsAllowed(payload);
     }
 
-    const response = Meteor.http.call('POST', 'http://' + gethAddress + ':' + gethPort, {
+    const response =  Meteor.http.call('POST', 'http://' + gethAddress + ':' + gethPort, {
       content: JSON.stringify(payload)
     });
 
     try {
-      console.log('response :', response);
       return JSON.parse(response.content);
     } catch (e) {
       console.log(e);

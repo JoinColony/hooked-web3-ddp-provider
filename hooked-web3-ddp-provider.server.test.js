@@ -1,11 +1,11 @@
 /* eslint-env node */
 /* globals describe, before, beforeEach, it*/
 import { sinon } from 'meteor/practicalmeteor:sinon';
-import { gethAddress, gethPort } from 'meteor/colony:hooked-web3-ddp-provider';
+import { Meteor } from 'meteor/meteor';
 
 describe('hooked-web3-ddp-provider server', function () {
 
-  let sandbox;
+  let sandbox, server;
   const error = new Error('This provider doesn\'t support that method');
   const randomAddress = '0x54450450e24286143a35686ad77a7c851ada01a0';
 

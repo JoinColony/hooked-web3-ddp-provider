@@ -1,7 +1,8 @@
 /* eslint-env node */
 /* globals describe, before, beforeEach, it*/
 import { sinon } from 'meteor/practicalmeteor:sinon';
-import {HookedWeb3DdpProvider} from 'meteor/colony:hooked-web3-ddp-provider';
+import { Meteor } from 'meteor/meteor';
+import { HookedWeb3DdpProvider } from 'meteor/colony:hooked-web3-ddp-provider';
 
 describe('hooked-web3-ddp-provider client', function () {
 
@@ -57,7 +58,7 @@ describe('hooked-web3-ddp-provider client', function () {
       method: 'not-allowed-method'
     };
 
-    sandbox.stub(provider._Meteor, 'call', function(method, params, callback) {
+    sandbox.stub(Meteor, 'call', function(method, params, callback) {
       callback(null, {result: []});
     });
 
@@ -66,7 +67,7 @@ describe('hooked-web3-ddp-provider client', function () {
   });
 
   it('should have a method called isConnected that returns true when connected', function (done) {
-    sandbox.stub(provider._Meteor, 'call', function(method, params, callback) {
+    sandbox.stub(Meteor, 'call', function(method, params, callback) {
       callback(null, true);
     });
 
@@ -78,7 +79,7 @@ describe('hooked-web3-ddp-provider client', function () {
   });
 
   it('should have a method called isConnected that returns false when not connected', function(done) {
-    sandbox.stub(provider._Meteor, 'call', function(method, params, callback) {
+    sandbox.stub(Meteor, 'call', function(method, params, callback) {
       callback(null, false);
     });
 
@@ -109,7 +110,7 @@ describe('hooked-web3-ddp-provider client', function () {
 
   it('should throw if an error occurs with the transaction signer signTransaction function', function() {
     const callback = sandbox.spy();
-    sandbox.stub(provider._Meteor, 'call', function(method, params, callback) {
+    sandbox.stub(Meteor, 'call', function(method, params, callback) {
       callback(null, {result: '0x0'});
     });
 

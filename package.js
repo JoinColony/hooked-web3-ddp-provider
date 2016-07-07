@@ -33,5 +33,6 @@ Package.onTest(function(api) {
 });
 
 Npm.depends({
-  'web3': '0.16.0'
+  'web3': '0.16.0',
+  'proxyquire' : '1.7.10'
 });
