@@ -1,0 +1,34 @@
+{
+  "name": "hooked-web3-ddp-provider",
+  "version": "1.0.3",
+  "description": "a web3 provider that can be used with meteor applications",
+  "main": "package.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "meteor test-packages --once --driver-package dispatch:mocha-phantomjs ./",
+    "validate": "npm ls"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoinColony/hooked-web3-ddp-provider.git"
+  },
+  "keywords": [
+    "meteor",
+    "web3",
+    "ethereum"
+  ],
+  "author": "Thiago Delgado <thiagodelgado111@gmail.com> (http://github.com/thiagodelgado111)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoinColony/hooked-web3-ddp-provider/issues"
+  },
+  "homepage": "https://github.com/JoinColony/hooked-web3-ddp-provider#readme",
+  "devDependencies": {
+    "eslint": "3.0.1",
+    "precommit-hook": "3.0.0"
+  }
+}
