@@ -1,0 +1,30 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react", "babel"],
+  "parser": "babel-eslint",
+  "env":{
+    "meteor": true,
+    "browser": true,
+    "es6": true,
+    "commonjs": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  // To give you an idea how to override rule options:
+  "rules": {
+    "quotes": [2, "single"],
+    "no-console": [0],
+    "eol-last": [0],
+    "no-mixed-requires": [0],
+    "no-underscore-dangle": [0],
+    "babel/generator-star-spacing": [1],
+    "semi": [2, "always"],
+    "radix": [0],
+    "jsx-quotes": [2, "prefer-double"]
+  }
+}

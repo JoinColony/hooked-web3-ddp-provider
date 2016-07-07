@@ -1,0 +1,8 @@
+node_modules
+**/build/*
+./app/.meteor/local
+test-results.xml
+coverage
+.node-xmlhttprequest*
+.screenshots
+./.npm
