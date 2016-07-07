@@ -25,7 +25,8 @@ Package.onTest(function(api) {
     'http',
     'practicalmeteor:chai',
     'practicalmeteor:mocha',
-    'practicalmeteor:sinon'
+    'practicalmeteor:sinon',
+    'dispatch:mocha-phantomjs'
   ]);
 
   api.add_files(['hooked-web3-ddp-provider.client.test.js'], ['client']);

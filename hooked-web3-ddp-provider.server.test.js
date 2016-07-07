@@ -1,13 +1,13 @@
-/* eslint-env node */
-/* globals describe, before, beforeEach, it*/
-import { sinon } from 'meteor/practicalmeteor:sinon';
+/* eslint-env mocha */
 import { Meteor } from 'meteor/meteor';
+
+import { sinon } from 'meteor/practicalmeteor:sinon';
+import {expect} from 'meteor/practicalmeteor:chai';
 
 describe('hooked-web3-ddp-provider server', function () {
 
-  let sandbox, server;
+  let sandbox;
   const error = new Error('This provider doesn\'t support that method');
-  const randomAddress = '0x54450450e24286143a35686ad77a7c851ada01a0';
 
   beforeEach(function() {
     sandbox = sinon.sandbox.create();
@@ -15,7 +15,7 @@ describe('hooked-web3-ddp-provider server', function () {
 
   afterEach(function(){
     sandbox.restore();
-  })
+  });
 
   it('should fail to call sendAsync using JSON-RPC disallowed methods', function(){
     const payload = {
@@ -30,7 +30,6 @@ describe('hooked-web3-ddp-provider server', function () {
   });
 
   it('should allow users to call sendAsync with allowed JSON-RPC methods', function(done){
-    const callback = sandbox.spy();
     const payload = {
       method: 'eth_accounts'
     };

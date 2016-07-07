@@ -1,12 +1,15 @@
-/* eslint-env node */
-/* globals describe, before, beforeEach, it*/
-import { sinon } from 'meteor/practicalmeteor:sinon';
+/* eslint-env mocha */
 import { Meteor } from 'meteor/meteor';
+
+import { sinon } from 'meteor/practicalmeteor:sinon';
+import {expect} from 'meteor/practicalmeteor:chai';
 import { HookedWeb3DdpProvider } from 'meteor/colony:hooked-web3-ddp-provider';
 
 describe('hooked-web3-ddp-provider client', function () {
 
   let provider, transactionSigner, sandbox;
+  const error = new Error('This provider doesn\'t support that method');
+
   beforeEach(function() {
     sandbox = sinon.sandbox.create();
   });
@@ -14,8 +17,8 @@ describe('hooked-web3-ddp-provider client', function () {
   before(function() {
 
     transactionSigner = {
-      hasAddress: function (address, callback) {},
-      signTransaction: function(tx_params, callback) {}
+      hasAddress: function () {},
+      signTransaction: function() {}
     };
 
     provider = new HookedWeb3DdpProvider({
@@ -42,18 +45,21 @@ describe('hooked-web3-ddp-provider client', function () {
   });
 
   it('should allow users to call allowed JSON-RPC methods', function() {
+    sandbox.stub(Meteor, 'call', function(error, arg, callback) {
+      callback();
+    });
     const callback = sandbox.spy();
     const payload = {
       method: 'eth_accounts'
     };
 
     provider.sendDdpRequest(payload, callback);
-    expect(callback).to.not.have.been.calledWith(new Error('This provider doesn\'t support that method'));
+    expect(callback).to.not.have.been.calledWith(error);
   });
 
   it('should fail to use a JSON-RPC method that is not allowed', function(){
     const callback = sandbox.spy();
-    callback.withArgs(new Error('This provider doesn\'t support that method'));
+    callback.withArgs(error);
     const payload = {
       method: 'not-allowed-method'
     };
@@ -95,10 +101,10 @@ describe('hooked-web3-ddp-provider client', function () {
     const callback = sandbox.spy();
 
     let _params = {
-      from: "0x985095ef977ba75fb2bb79cd5c4b84c81392dff6",
-      gas: "0x2fefd8",
-      gasPrice: "0xba43b7400",
-      nonce: "0x21"
+      from: '0x985095ef977ba75fb2bb79cd5c4b84c81392dff6',
+      gas: '0x2fefd8',
+      gasPrice: '0xba43b7400',
+      nonce: '0x21'
     };
 
     expect(function() {
@@ -120,10 +126,10 @@ describe('hooked-web3-ddp-provider client', function () {
     });
 
     let _params = {
-      from: "0x985095ef977ba75fb2bb79cd5c4b84c81392dff6",
-      gas: "0x2fefd8",
-      gasPrice: "0xba43b7400",
-      nonce: "0x21"
+      from: '0x985095ef977ba75fb2bb79cd5c4b84c81392dff6',
+      gas: '0x2fefd8',
+      gasPrice: '0xba43b7400',
+      nonce: '0x21'
     };
 
     expect(function() {
