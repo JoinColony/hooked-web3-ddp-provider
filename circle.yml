@@ -8,7 +8,6 @@ dependencies:
     - "~/.npm"
     - "~/mongodb-linux-x86_64-2.6.4"
     - "~/.meteor"
-    - "app/.meteor/local"
 
   override:
      # Cache Mongo 2.6
@@ -21,7 +20,6 @@ dependencies:
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
 
-    - cd app && meteor npm install
     - npm install
     - npm install -g eslint
 test:
