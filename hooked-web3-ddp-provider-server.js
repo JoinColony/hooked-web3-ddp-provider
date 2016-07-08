@@ -1,7 +1,7 @@
 import {Meteor} from 'meteor/meteor';
 
-const gethAddress = process.env.GETH_ADDRESS || '127.0.0.1';
-const gethPort = process.env.GETH_PORT || '8545';
+export const gethAddress = process.env.GETH_ADDRESS || '127.0.0.1';
+export const gethPort = process.env.GETH_PORT || '8545';
 
 Meteor.methods({
   'web3DdpProviderExec': function (payload) {
@@ -10,12 +10,15 @@ Meteor.methods({
     } else {
       checkIfMethodIsAllowed(payload);
     }
-    const response = Meteor.http.call('POST', 'http://' + gethAddress + ':' + gethPort, {
+
+    const response =  Meteor.http.call('POST', 'http://' + gethAddress + ':' + gethPort, {
       content: JSON.stringify(payload)
     });
+
     try {
       return JSON.parse(response.content);
     } catch (e) {
+      console.log(e);
       throw new Error('Could not parse JSONRPC response');
     }
   }
