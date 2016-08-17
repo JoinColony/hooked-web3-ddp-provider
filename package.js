@@ -1,6 +1,6 @@
 Package.describe({
   name: 'colony:hooked-web3-ddp-provider',
-  version: '1.0.3',
+  version: '1.0.4',
   // Brief, one-line summary of the package.
   summary: '',
   // URL to the Git repository containing the source code for this package.
@@ -31,8 +31,4 @@ Package.onTest(function(api) {
 
   api.add_files(['hooked-web3-ddp-provider.client.test.js'], ['client']);
   api.add_files(['hooked-web3-ddp-provider.server.test.js'], ['server']);
-});
-
-Npm.depends({
-  'web3': '0.16.0'
 });

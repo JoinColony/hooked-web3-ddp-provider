@@ -1,6 +1,6 @@
 {
   "name": "hooked-web3-ddp-provider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a web3 provider that can be used with meteor applications",
   "main": "package.js",
   "scripts": {
@@ -29,5 +29,8 @@
   "devDependencies": {
     "eslint": "3.0.1",
     "precommit-hook": "3.0.0"
+  },
+  "dependencies": {
+    "web3": "^0.17.0-alpha"
   }
 }
