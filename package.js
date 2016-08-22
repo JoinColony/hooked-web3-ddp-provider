@@ -32,7 +32,3 @@ Package.onTest(function(api) {
   api.add_files(['hooked-web3-ddp-provider.client.test.js'], ['client']);
   api.add_files(['hooked-web3-ddp-provider.server.test.js'], ['server']);
 });
-
-Npm.depends({
-  'web3': '0.16.0'
-});

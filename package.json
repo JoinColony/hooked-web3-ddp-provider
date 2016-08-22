@@ -29,5 +29,8 @@
   "devDependencies": {
     "eslint": "3.0.1",
     "precommit-hook": "3.0.0"
+  },
+  "dependencies": {
+    "web3": "^0.17.0-alpha"
   }
 }
