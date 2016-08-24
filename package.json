@@ -1,6 +1,6 @@
 {
   "name": "hooked-web3-ddp-provider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a web3 provider that can be used with meteor applications",
   "main": "package.js",
   "scripts": {
