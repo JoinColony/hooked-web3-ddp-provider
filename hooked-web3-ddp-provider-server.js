@@ -12,8 +12,8 @@ Meteor.methods({
     }
 
     const response =  Meteor.http.call('POST', 'http://' + gethAddress + ':' + gethPort, {
-      content: JSON.stringify(payload)
-    });
+      content: JSON.stringify(payload),
+    headers: {'Content-Type': 'application/json'}});
 
     try {
       return JSON.parse(response.content);
