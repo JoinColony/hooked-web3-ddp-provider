@@ -1,12 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-import Web3 from 'web3';
+import utils from 'colony-utils';
 
 export class HookedWeb3DdpProvider {
   constructor({transaction_signer}) {
     // Cache of the most up to date transaction counts (nonces) for each address
     // encountered by the web3 provider that's managed by the transaction signer.
     this.global_nonces = {};
-    this._web3 = new Web3;
     this.transaction_signer = transaction_signer;
   }
 
@@ -135,7 +134,7 @@ export class HookedWeb3DdpProvider {
               done(err);
             } else {
               var new_nonce = result.result;
-              done(null, self._web3.toDecimal(new_nonce));
+              done(null, utils.toDecimal(new_nonce));
             }
           });
         }
@@ -156,7 +155,7 @@ export class HookedWeb3DdpProvider {
         var final_nonce = Math.max(nonce, self.global_nonces[sender] || 0);
 
         // Update the transaction parameters.
-        tx_params.nonce = self._web3.toHex(final_nonce);
+        tx_params.nonce = utils.toHex(final_nonce);
 
         // Update caches.
         session_nonces[sender] = final_nonce + 1;

@@ -10,6 +10,10 @@ Package.describe({
   documentation: 'README.md'
 });
 
+Npm.depends({
+  'colony-utils': 'git+https://github.com/JoinColony/colony-utils.git'
+});
+
 Package.onUse(function(api) {
   api.versionsFrom('1.3');
   api.use(['meteor', 'ecmascript']);

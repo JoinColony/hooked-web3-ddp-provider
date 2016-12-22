@@ -31,6 +31,6 @@
     "precommit-hook": "3.0.0"
   },
   "dependencies": {
-    "web3": "^0.17.0-alpha"
+    "colony-utils": "git+https://github.com/JoinColony/colony-utils.git"
   }
 }
